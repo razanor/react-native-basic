@@ -1,22 +1,23 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default function App() {
+const App = () => {
+  const [name, setName] = useState('shaun');
+
+  const clickHandler = () => {
+    setName('chun-li');
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.boldText}>Hello, World!</Text>
-      </View>
-      <View style={styles.body}>
-        <Text style={styles.boldText}>
-          Lorem ipsum dolor <Text>test</Text> sit amet.
-        </Text>
-        <Text>Lorem ipsum dolor sit amet. </Text>
-        <Text>Lorem ipsum dolor sit amet. </Text>
+      <Text>My name is {name}</Text>
+      <View style={styles.buttonContainer}>
+        {/* Not possible to style default button component  */}
+        <Button title='Update state' onPress={clickHandler} />
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -25,15 +26,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  header: {
-    backgroundColor: 'pink',
-    padding: 20,
-  },
-  boldText: {
-    fontWeight: 'bold',
-  },
-  body: {
-    backgroundColor: 'yellow',
-    padding: 20,
+  buttonContainer: {
+    marginTop: 20,
   },
 });
+
+export default App;
