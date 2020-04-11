@@ -1,20 +1,29 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 
 const App = () => {
   const [name, setName] = useState('shaun');
-
-  const clickHandler = () => {
-    setName('chun-li');
-  };
+  const [age, setAge] = useState('30');
 
   return (
     <View style={styles.container}>
-      <Text>My name is {name}</Text>
-      <View style={styles.buttonContainer}>
-        {/* Not possible to style default button component  */}
-        <Button title='Update state' onPress={clickHandler} />
-      </View>
+      <Text>Enter name:</Text>
+      <TextInput
+        multiline
+        style={styles.input}
+        placeholder='e.g. John Doe'
+        onChangeText={(val) => setName(val)}
+      />
+
+      <TextInput
+        keyboardType='numeric'
+        style={styles.input}
+        placeholder='e.g. 99'
+        onChangeText={(val) => setAge(val)}
+      />
+      <Text>
+        name: {name}, age: {age}
+      </Text>
     </View>
   );
 };
@@ -26,8 +35,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  buttonContainer: {
-    marginTop: 20,
+  input: {
+    borderWidth: 1,
+    borderColor: '#777',
+    padding: 8,
+    margin: 10,
+    width: 200,
   },
 });
 
