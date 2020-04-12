@@ -8,18 +8,20 @@ const AddTodo = ({ submitHandler }) => {
     setText(val);
   };
 
+  const submitTodo = () => {
+    submitHandler(text);
+    setText('');
+  };
+
   return (
     <View>
       <TextInput
+        value={text}
         style={styles.input}
         placeholder='new todo...'
         onChangeText={changeHandler}
       />
-      <Button
-        title='add todo'
-        color='coral'
-        onPress={() => submitHandler(text)}
-      />
+      <Button title='add todo' color='coral' onPress={submitTodo} />
     </View>
   );
 };
